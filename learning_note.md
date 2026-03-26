@@ -12,3 +12,11 @@ print(num)
 print("Hello python",end=" ")
 ```
 * while True 无限循环
+* 判断质数 is_prime:引入布尔变量
+```python
+n = 7
+is_prime=True
+for i in range(1,10):
+    if n % i ==0:
+         is_prime=False
+```
