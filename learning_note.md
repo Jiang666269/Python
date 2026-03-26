@@ -1,5 +1,5 @@
 # **python学习笔记**
-##  *Day2:for && while*
+##  *Day3:for && while*
 * 随机数:
 导入random模块，random.randint(a,b),即返回a,b之间(包括a,b)的一个整数
 ```python
