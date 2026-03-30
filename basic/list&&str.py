@@ -1,4 +1,4 @@
-#Day6 list&&str
+#Day5 list&&str
 
 #1.统计字符出现次数
 '''
