@@ -112,3 +112,66 @@ if len(compressed) >= len(text):
 else:
     print("压缩有效")
 '''
+
+#学生成绩分析系统（综合)
+student = {}
+level = {"优秀":0,
+         "良好":0,
+         "及格":0,
+         "不及格":0 }
+appeared_times = {}
+max_students = []
+max_score = 0
+longest = 0
+total_score = 0.0
+student_num = int(input("请输入学生数量:"))
+for i in range(student_num):
+    name,score = input("请输入姓名和分数(空格隔开):").split()
+    score = float(score)
+    student[name] = score
+print("所有学生信息：")
+for item in student.items():
+    print(f"{item[0]} {item[1]}")
+    if item[1] > max_score:
+        max_student = item[0]
+        max_score = item[1]
+max_students.append(max_student)
+for item in student.items():
+    if item[1] == max_score and item[0] not in max_students:
+        max_students.append(item[0])
+print("最高分学生:")
+for i in range(len(max_students)):
+    print(max_students[i] + " " + str(max_score) )
+
+for item in student.items():
+    if float(item[1]) >= 90:
+        level["优秀"] += 1
+    elif float(item[1]) >= 80:
+        level["良好"] += 1
+    elif float(item[1]) >= 60:
+        level["及格"] += 1
+    else:
+        level["不及格"] += 1
+print("成绩等级统计:")
+for item in level.items():
+    print(f"{item[0]}:{item[1]}")
+
+for item in student.items():
+    if item[1] not in appeared_times:
+        appeared_times[item[1]] = 1
+    else:
+        appeared_times[item[1]] += 1
+print("分数出现次数:")
+for item in appeared_times.items():
+    print(f"{item[0]} 出现了 {item[1]}次")
+
+for item in student.items():
+    if len(item[0]) > longest:
+        longest = len(item[0])
+        longest_student = item[0]
+print(f"名字最长的学生： {longest_student}")
+
+for score in student.items():
+    total_score += score[1]
+average_score = round(total_score / len(student.keys()),2)
+print(f"平均分为 {average_score}")
