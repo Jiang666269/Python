@@ -114,6 +114,7 @@ else:
 '''
 
 #学生成绩分析系统（综合)
+'''
 student = {}
 level = {"优秀":0,
          "良好":0,
@@ -175,3 +176,4 @@ for score in student.items():
     total_score += score[1]
 average_score = round(total_score / len(student.keys()),2)
 print(f"平均分为 {average_score}")
+'''
