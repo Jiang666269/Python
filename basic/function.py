@@ -1,6 +1,6 @@
 #Day 7 函数
 #学生系统函数化重构
-
+'''
 def get_students():
     students = {}
     student_num = int(input("请输入学生人数："))
@@ -66,3 +66,51 @@ def get_average_score(students):
         total_score += score
     average_score = round(total_score/len(students),2)
     return average_score
+'''
+
+
+#Day 8 function进阶
+
+#6 *args
+def max_num(*nums):
+    max_value = nums[0]
+    for num in nums:
+        if num > max_value:
+            max_value = num
+    return max_value
+
+#8 递归
+def fib(n):
+    if n <= 2:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+#9 综合
+def process_scores(*scores):
+    max_value = 0
+    total_score = 0
+    average_score = 0
+    exceed_average = []
+    for score in scores:
+        total_score +=score
+        if score> max_value:
+            max_value = score
+    average_score = round(total_score/len(scores),2)
+    for score in scores:
+        if score > average_score:
+            exceed_average.append(score)
+    return (max_value,average_score,exceed_average)
+
+#10 终极(不用全局变量)
+def counter():
+    count = 0
+    def inner():
+        nonlocal count #nonlocal 修改外层变量
+        count += 1
+        return count
+    return inner
+c = counter()
+print(c())
+print(c())
+print(c())
