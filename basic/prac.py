@@ -37,6 +37,7 @@ while True:
          else:
              print("bigger")
 '''
+from typing import final
 
 #文本分析系统实现功能：1.去除多余空格 2.统计单词数量 3.找最长单词 4.统计每个单词出现的次数
 '''
@@ -177,3 +178,51 @@ for score in student.items():
 average_score = round(total_score / len(student.keys()),2)
 print(f"平均分为 {average_score}")
 '''
+
+#电商订单计算器
+#定义一个函数 用于根据传入的商品信息（名字，价格，数量），优惠，运费信息计算订单的总金额
+#优惠卷规则：满3000才能用 且优惠卷总额不超过商品总价
+#积分抵扣规则：满2000才能用 100积分=1元 只能整数抵扣 抵扣金额低于剩余金额
+#会员折扣：会员9折（最后计算）
+#运费规则：满5000 免运费 否则运费15
+#返回值格式：（原始总价，优惠后价格，最终支付价格）
+def calculate_order(goods,coupon=0,points=0,is_vip=False):
+    original_total = 0
+    current_total = 0
+    for name,price,count in goods:
+        original_total += price * count
+        current_total += price * count
+
+    if coupon<=current_total and original_total>=3000:
+        current_total -= coupon
+
+    points_amount = points // 100
+    if points_amount<=current_total and original_total>=2000:
+        current_total -= points_amount
+    final_total = current_total
+
+    if is_vip:
+        final_total = final_total * 0.9
+
+    if final_total<5000:
+        final_total = final_total+15
+    price = (original_total,current_total,final_total)
+    return price
+
+goods = []
+n = int(input("输入商品数量："))
+for i in range(n):
+    name,price,count = input("请输入商品名 价格 数量:").split()
+    price = float(price)
+    count = int(count)
+    goods.append((name,price,count))
+coupon = float(input("请输入优惠卷金额："))
+points = int(input("请输入积分数量（整百）："))
+is_vip = input("是否是vip，是的话请输入True：").lower()
+if is_vip == "true":
+    is_vip = True
+price = calculate_order(goods,coupon,points,is_vip)
+print(f"原价：{price[0]}")
+print(f"优惠后：{price[1]}")
+print(f"实际支付：{price[2]}")
+
