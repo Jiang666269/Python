@@ -186,6 +186,7 @@ print(f"平均分为 {average_score}")
 #会员折扣：会员9折（最后计算）
 #运费规则：满5000 免运费 否则运费15
 #返回值格式：（原始总价，优惠后价格，最终支付价格）
+'''
 def calculate_order(goods,coupon=0,points=0,is_vip=False):
     original_total = 0
     current_total = 0
@@ -225,4 +226,4 @@ price = calculate_order(goods,coupon,points,is_vip)
 print(f"原价：{price[0]}")
 print(f"优惠后：{price[1]}")
 print(f"实际支付：{price[2]}")
-
+'''
