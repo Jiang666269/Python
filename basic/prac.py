@@ -227,3 +227,5 @@ print(f"原价：{price[0]}")
 print(f"优惠后：{price[1]}")
 print(f"实际支付：{price[2]}")
 '''
+
+
