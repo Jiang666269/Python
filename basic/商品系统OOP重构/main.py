@@ -1,5 +1,6 @@
 from manager import *
 manager = Goodsmanager()
+manager.load_from_file()
 while True:
     print("\n==== 商品管理系统 ====")
     print("1.添加商品")
@@ -56,6 +57,7 @@ while True:
             print("暂无商品")
     elif choice == "0":
         print("成功退出系统")
+        manager.save_to_file()
         break
     else:
         print("无效操作，请重新输入：")
